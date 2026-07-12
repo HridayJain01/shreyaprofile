@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ChapterHeading from "@/components/ChapterHeading";
 import { useReveal } from "@/lib/useReveal";
 
@@ -115,9 +116,117 @@ function IntellimarkEntry() {
 
 /* ------------------------------ Kalptaru Academy ------------------------------ */
 
+function TiraChat() {
+  // 0 = draft waiting · 1 = sent, typing · 2 = she replied
+  const [stage, setStage] = useState(0);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  const send = () => {
+    if (stage !== 0) return;
+    setStage(1);
+    timers.current.push(setTimeout(() => setStage(2), 1800));
+  };
+
+  return (
+    <div data-reveal data-reveal-delay="0.15" className="relative">
+      <div className="paper-card p-6 rotate-1 relative">
+        <span className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-2" />
+        <p className="text-[10px] tracking-[0.35em] uppercase text-warmgray">
+          one month later · 11:04 pm
+        </p>
+        <p className="font-hand text-xl text-champagne mt-1 mb-4">
+          the message I almost didn&apos;t send
+        </p>
+
+        <div className="space-y-3 min-h-52">
+          {/* my draft / sent message */}
+          <motion.div
+            layout
+            className={`max-w-[85%] ml-auto rounded-2xl rounded-br-sm px-4 py-3 text-sm leading-relaxed ${
+              stage === 0 ? "border-2 border-dashed border-blush/60 text-warmgray" : "bg-blush/25 text-ink"
+            }`}
+          >
+            Hi! We met in the queue at the Tira event — I&apos;m the girl who builds websites.
+            Is one of your three businesses still looking for one? 🙂
+            {stage === 0 && (
+              <span className="block font-hand text-lg text-blush mt-1">draft · unsent for 31 days</span>
+            )}
+          </motion.div>
+
+          <AnimatePresence>
+            {stage === 1 && (
+              <motion.div
+                key="typing"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="w-16 rounded-2xl rounded-bl-sm bg-linen px-4 py-3 flex gap-1.5"
+              >
+                {[0, 1, 2].map((i) => (
+                  <motion.span
+                    key={i}
+                    className="w-1.5 h-1.5 rounded-full bg-warmgray"
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.18 }}
+                  />
+                ))}
+              </motion.div>
+            )}
+            {stage === 2 && (
+              <motion.div
+                key="reply"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="max-w-[85%] rounded-2xl rounded-bl-sm bg-linen px-4 py-3 text-sm leading-relaxed text-ink"
+              >
+                Of course I remember you! Come by the academy this week — let&apos;s talk. ✨
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {stage === 2 && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="font-hand text-2xl text-blush text-center pt-2"
+            >
+              she remembered me.
+            </motion.p>
+          )}
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          {stage === 0 ? (
+            <button
+              onClick={send}
+              className="px-6 py-3 text-xs tracking-[0.25em] uppercase bg-ink text-paper hover:bg-ink-deep transition-colors cursor-pointer"
+            >
+              Send it anyway ✈
+            </button>
+          ) : (
+            <button
+              onClick={() => setStage(0)}
+              className="text-xs tracking-[0.25em] uppercase text-warmgray hover:text-ink transition-colors cursor-pointer"
+            >
+              relive it →
+            </button>
+          )}
+        </div>
+      </div>
+      <p className="font-hand text-xl text-warmgray text-center mt-4">
+        moral: the scariest send button is usually the right one.
+      </p>
+    </div>
+  );
+}
+
 function LipstickStory() {
   return (
-    <div data-reveal className="relative max-w-2xl">
+    <div data-reveal className="relative">
       <div className="paper-card notebook-lines p-8 md:p-10 -rotate-[0.6deg] relative">
         <span className="tape -top-3 left-10 -rotate-2" />
         <p className="text-[10px] tracking-[0.35em] uppercase text-warmgray">
@@ -223,7 +332,14 @@ export default function Experience() {
           <h3 className="font-serif-display text-3xl md:text-4xl text-ink-deep">Kalptaru Academy</h3>
           <span className="font-hand text-2xl text-champagne">postcards from before the job</span>
         </div>
-        <LipstickStory />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-7">
+            <LipstickStory />
+          </div>
+          <div className="lg:col-span-5 lg:mt-6">
+            <TiraChat />
+          </div>
+        </div>
         <KalptaruPostcards />
       </div>
     </section>

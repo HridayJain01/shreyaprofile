@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ChapterHeading from "@/components/ChapterHeading";
@@ -21,10 +21,36 @@ const PINS = [
 export default function Leadership() {
   const ref = useReveal<HTMLElement>();
   const threadRef = useRef<SVGPathElement>(null);
+  const wallRef = useRef<HTMLDivElement>(null);
+  const [dims, setDims] = useState({ w: 0, h: 0 });
+
+  // Measure the wall so the thread is drawn in real pixels — no stretching.
+  // Re-measure on resize, on tab visibility, and once shortly after mount
+  // (ResizeObserver stalls while the tab is hidden).
+  useEffect(() => {
+    const wall = wallRef.current;
+    if (!wall) return;
+    const measure = () =>
+      setDims((prev) => {
+        const w = wall.clientWidth;
+        const h = wall.clientHeight;
+        return prev.w === w && prev.h === h ? prev : { w, h };
+      });
+    measure();
+    const t = setTimeout(measure, 500);
+    const ro = new ResizeObserver(measure);
+    ro.observe(wall);
+    document.addEventListener("visibilitychange", measure);
+    return () => {
+      clearTimeout(t);
+      ro.disconnect();
+      document.removeEventListener("visibilitychange", measure);
+    };
+  }, []);
 
   useEffect(() => {
     const path = threadRef.current;
-    if (!path) return;
+    if (!path || dims.w === 0) return;
     const len = path.getTotalLength();
     gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
     const tween = gsap.to(path, {
@@ -41,9 +67,21 @@ export default function Leadership() {
       tween.scrollTrigger?.kill();
       tween.kill();
     };
-  }, []);
+  }, [dims]);
 
-  const d = PINS.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+  // Real thread physics-lite: each segment droops a little between its pins.
+  const pts = PINS.map((p) => ({ x: (p.x / 100) * dims.w, y: (p.y / 100) * dims.h }));
+  const d = pts
+    .map((p, i) => {
+      if (i === 0) return `M ${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
+      const prev = pts[i - 1];
+      const dist = Math.hypot(p.x - prev.x, p.y - prev.y);
+      const sag = Math.min(34, dist * 0.12);
+      const mx = (prev.x + p.x) / 2;
+      const my = (prev.y + p.y) / 2 + sag;
+      return `Q ${mx.toFixed(1)} ${my.toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
+    })
+    .join(" ");
 
   return (
     <section ref={ref} id="leadership" className="relative bg-linen paper-texture">
@@ -57,6 +95,7 @@ export default function Leadership() {
         </p>
 
         <div
+          ref={wallRef}
           data-wall
           data-reveal
           className="relative w-full min-h-[42rem] md:min-h-[38rem] rounded-sm p-4"
@@ -65,10 +104,16 @@ export default function Leadership() {
             boxShadow: "inset 0 0 40px rgba(110,103,95,0.1), 0 30px 60px -30px rgba(35,35,35,0.25)",
           }}
         >
-          {/* the thread */}
-          <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path ref={threadRef} d={d} fill="none" stroke="#D9A7B5" strokeWidth="0.35" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 2 }} />
-          </svg>
+          {/* the thread — drawn in pixels, drooping between pins like real string */}
+          {dims.w > 0 && (
+            <svg
+              className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+              viewBox={`0 0 ${dims.w} ${dims.h}`}
+            >
+              <path d={d} fill="none" stroke="#232323" strokeWidth="2.5" opacity="0.06" transform="translate(1.5 2.5)" />
+              <path ref={threadRef} d={d} fill="none" stroke="#D9A7B5" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          )}
 
           {/* pins */}
           {PINS.map((p, i) => (
