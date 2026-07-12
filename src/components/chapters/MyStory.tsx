@@ -33,7 +33,7 @@ const doodle = (paths: string[], stroke = "#232323") => (
 
 const MILESTONES: Milestone[] = [
   {
-    year: "2021",
+    year: "2022",
     title: "Engineering begins",
     note: "Walked into TSEC with a notebook full of questions. Information Technology chose me back.",
     memory: {
@@ -47,45 +47,21 @@ const MILESTONES: Milestone[] = [
     },
   },
   {
-    year: "2022",
-    title: "The first project",
-    note: "It barely worked. It was beautiful to me anyway. That gap — between barely and beautiful — became my obsession.",
+    year: "2023",
+    title: "First hackathon — and a win",
+    note: "Newbiethon, the beginners' hackathon. Just 3 hours, 3 teammates — and we won. First taste of building under pressure, and of liking it.",
     memory: {
       kind: "sticky",
       color: "#F4E9C9",
-      caption: "TODO (found in an old notebook)",
-      body: "1. make it work\n2. make it right\n3. make it lovely ✿",
+      caption: "the maths of it",
+      body: "3 hours\n3 teammates\n1 very first win ✿",
       art: null as unknown as React.ReactNode,
-    },
-  },
-  {
-    year: "2023",
-    title: "First hackathon",
-    note: "36 hours, four teammates, too much chai. We didn't win — but I learned I could build under pressure and love it.",
-    memory: {
-      kind: "polaroid",
-      caption: "3:42 AM, still going",
-      art: doodle(
-        ["M30 100 h60 v-30 h-60 z M40 70 v-12 h40 v12", "M120 95 a16 16 0 1 1 0.1 0 M120 85 v10 h8", "M30 115 h140"],
-        "#6E675F"
-      ),
     },
   },
   {
     year: "2024",
-    title: "Etcetera Holidays",
-    note: "My first taste of real users. Frontend developer & designer — I learned that shipping something people touch changes how you build everything.",
-    memory: {
-      kind: "scrap",
-      caption: "boarding pass, kept for luck",
-      body: "ETC ✈ HOLIDAYS · SEAT 12A · DESIGN & CODE",
-      art: null as unknown as React.ReactNode,
-    },
-  },
-  {
-    year: "2025",
     title: "Intellimark AI",
-    note: "Software engineer intern. Real scale, real reviews, real engineering. March 2025 — my first real engineering challenge.",
+    note: "Web developer intern — for a whole year. Real scale, real reviews, real users. The first time my code belonged to something bigger than me.",
     memory: {
       kind: "polaroid",
       caption: "first PR approved ✓",
@@ -96,14 +72,55 @@ const MILESTONES: Milestone[] = [
     },
   },
   {
+    year: "2024",
+    title: "Etcetera Holidays",
+    note: "Frontend developer & designer. Shipping something people actually touch changes how you build everything.",
+    memory: {
+      kind: "scrap",
+      caption: "boarding pass, kept for luck",
+      body: "ETC ✈ HOLIDAYS · SEAT 12A · DESIGN & CODE",
+      art: null as unknown as React.ReactNode,
+    },
+  },
+  {
     year: "2025",
     title: "Codeissance — we won",
-    note: "The hackathon win. Months of losing gracefully, then one night everything clicked. I still have the confetti somewhere.",
+    note: "The big hackathon win. Months of losing gracefully, then one night everything clicked. I still have the confetti somewhere.",
     memory: {
       kind: "sticky",
       color: "#EFD9DF",
       caption: "note from a teammate",
       body: "“shreya carried the design\nAND the deploy” ♡",
+      art: null as unknown as React.ReactNode,
+    },
+  },
+  {
+    year: "2026",
+    title: "Kalptaru Academy",
+    note: "Built two websites solo — one for their diamond-jewellery learning academy, one for her skincare brand. Attended events with her, hosting included. My first end-to-end everything.",
+    memory: {
+      kind: "polaroid",
+      caption: "two sites, one me",
+      art: doodle(
+        [
+          "M40 46 l16 -14 l16 14 l-6 0 l0 22 l-20 0 l0 -22 z",
+          "M56 44 l0 8 M50 52 l12 0",
+          "M110 34 h56 v40 h-56 z M118 46 h40 M118 56 h28",
+          "M138 88 q -18 10 0 22 q 18 -12 0 -22",
+        ],
+        "#C4A484"
+      ),
+    },
+  },
+  {
+    year: "2026",
+    title: "Deloitte, virtually",
+    note: "Virtual intern at Deloitte — live sessions with people whose calendars I used to only read about. Learned an unreasonable amount in a short time.",
+    memory: {
+      kind: "sticky",
+      color: "#DFE6DA",
+      caption: "session notes, condensed",
+      body: "listen hard.\nask sharper.\nwrite it down.",
       art: null as unknown as React.ReactNode,
     },
   },
@@ -193,7 +210,7 @@ export default function MyStory() {
 
   return (
     <section ref={ref} id="my-story" className="relative bg-linen paper-texture">
-      <ChapterHeading number="02" title="My Story" note="a notebook that never ends" />
+      <ChapterHeading number="03" title="My Story" note="a notebook that never ends" />
 
       <div data-spine className="relative mx-auto max-w-4xl px-6 pb-40 notebook-lines">
         {/* red margin line, like a real notebook */}

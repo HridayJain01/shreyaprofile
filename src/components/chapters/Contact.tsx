@@ -65,7 +65,7 @@ export default function Contact() {
 
   return (
     <section ref={ref} id="contact" className="relative bg-linen paper-texture overflow-hidden">
-      <ChapterHeading number="08" title="Write to Me" note="the last page is yours" />
+      <ChapterHeading number="10" title="Write to Me" note="the last page is yours" />
 
       <div className="relative mx-auto max-w-6xl px-6 pb-16 min-h-[36rem]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

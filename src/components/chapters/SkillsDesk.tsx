@@ -151,7 +151,7 @@ export default function SkillsDesk() {
 
   return (
     <section ref={ref} id="skills" className="relative bg-paper paper-texture">
-      <ChapterHeading number="05" title="The Desk" note="everything here means something" />
+      <ChapterHeading number="06" title="The Desk" note="everything here means something" />
 
       <div className="mx-auto max-w-6xl px-6 pb-36">
         <p data-reveal className="max-w-xl text-warmgray leading-relaxed -mt-6 mb-10">

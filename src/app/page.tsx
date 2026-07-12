@@ -6,12 +6,14 @@ import Intro from "@/components/Intro";
 import SmoothScroll from "@/components/SmoothScroll";
 import WhoAmI from "@/components/chapters/WhoAmI";
 
+const TenThings = dynamic(() => import("@/components/chapters/TenThings"));
 const MyStory = dynamic(() => import("@/components/chapters/MyStory"));
 const Projects = dynamic(() => import("@/components/chapters/Projects"));
 const Experience = dynamic(() => import("@/components/chapters/Experience"));
 const SkillsDesk = dynamic(() => import("@/components/chapters/SkillsDesk"));
 const Leadership = dynamic(() => import("@/components/chapters/Leadership"));
 const Achievements = dynamic(() => import("@/components/chapters/Achievements"));
+const PlotTwists = dynamic(() => import("@/components/chapters/PlotTwists"));
 const Contact = dynamic(() => import("@/components/chapters/Contact"));
 const EasterEggs = dynamic(() => import("@/components/EasterEggs"));
 
@@ -34,12 +36,14 @@ export default function Home() {
           <div className="grain-overlay" aria-hidden />
           <main>
             <WhoAmI />
+            <TenThings />
             <MyStory />
             <Projects />
             <Experience />
             <SkillsDesk />
             <Leadership />
             <Achievements />
+            <PlotTwists />
             <Contact />
           </main>
           <EasterEggs />

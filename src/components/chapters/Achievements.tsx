@@ -106,7 +106,7 @@ export default function Achievements() {
 
   return (
     <section ref={ref} id="achievements" className="relative bg-paper paper-texture overflow-hidden">
-      <ChapterHeading number="07" title="Frozen Moments" note="walk between them" />
+      <ChapterHeading number="08" title="Frozen Moments" note="walk between them" />
 
       <div ref={pinRef} className="md:h-screen md:flex md:items-center">
         <div

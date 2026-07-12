@@ -97,10 +97,10 @@ export default function WhoAmI() {
               data-reveal-delay="0.15"
               className="mt-10 max-w-md text-lg leading-relaxed text-warmgray"
             >
-              A software engineer from Mumbai who believes technology can be{" "}
-              <em className="text-ink font-serif-display text-xl">elegant</em>,{" "}
-              <em className="text-ink font-serif-display text-xl">emotional</em>, and{" "}
-              <em className="text-ink font-serif-display text-xl">beautifully crafted</em>.
+              A software engineer from Mumbai who finds inspiration in{" "}
+              <em className="text-ink font-serif-display text-xl">books</em> as often as in{" "}
+              <em className="text-ink font-serif-display text-xl">code</em>, believing both are
+              meant to <em className="text-ink font-serif-display text-xl">move people</em>.
             </p>
 
             <div data-reveal data-reveal-delay="0.25" className="mt-12 flex flex-wrap gap-x-12 gap-y-4">
@@ -110,11 +110,11 @@ export default function WhoAmI() {
               </div>
               <div>
                 <div className="text-[10px] tracking-[0.3em] uppercase text-warmgray">CGPA</div>
-                <div className="font-serif-display text-xl mt-1">8.67</div>
+                <div className="font-serif-display text-xl mt-1">8.91</div>
               </div>
               <div>
                 <div className="text-[10px] tracking-[0.3em] uppercase text-warmgray">Currently</div>
-                <div className="font-serif-display text-xl mt-1">Engineering elegant software</div>
+                <div className="font-serif-display text-xl mt-1">In my software engineer era.</div>
               </div>
             </div>
 
@@ -123,7 +123,7 @@ export default function WhoAmI() {
               <div data-drift="1.4" className="paper-card p-6 -rotate-1 relative">
                 <span className="tape -top-3 left-8 -rotate-3" />
                 <p className="font-serif-display italic text-2xl leading-snug text-ink">
-                  &ldquo;Code is my medium. Craft is the point.&rdquo;
+                  &ldquo;Return to the work. Again. And again.&rdquo;
                 </p>
                 <p className="font-hand text-lg text-champagne mt-2">— a note to myself, always</p>
               </div>
@@ -145,9 +145,9 @@ export default function WhoAmI() {
                 <p className="font-hand text-2xl text-blush">detail-obsessed →</p>
               </div>
               <div data-drift="1.6" className="absolute -right-8 -bottom-14 hidden md:block rotate-3">
-                <p className="font-hand text-2xl text-sage">design head ·</p>
-                <p className="font-hand text-2xl text-sage">hackathon winner ·</p>
-                <p className="font-hand text-2xl text-sage">engineer at heart</p>
+                <p className="font-hand text-2xl text-sage">always building ·</p>
+                <p className="font-hand text-2xl text-sage">always learning ·</p>
+                <p className="font-hand text-2xl text-sage">always curious</p>
               </div>
 
               <div className="coffee-stain w-24 h-24 -bottom-20 -left-10 rotate-12" />

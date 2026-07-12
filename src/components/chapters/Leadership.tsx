@@ -47,7 +47,7 @@ export default function Leadership() {
 
   return (
     <section ref={ref} id="leadership" className="relative bg-linen paper-texture">
-      <ChapterHeading number="06" title="The Wall" note="connect the threads" />
+      <ChapterHeading number="07" title="The Wall" note="connect the threads" />
 
       <div className="mx-auto max-w-6xl px-6 pb-36">
         <p data-reveal className="max-w-xl text-warmgray leading-relaxed -mt-6 mb-10">
@@ -80,10 +80,14 @@ export default function Leadership() {
           ))}
 
           {/* committee pass */}
-          <div className="absolute left-[8%] top-[10%] w-44 md:w-52 paper-card p-4 -rotate-3">
-            <p className="text-[9px] tracking-[0.35em] uppercase text-warmgray">TSEC CodeStorm · 2024–25</p>
+          <div className="absolute left-[8%] top-[8%] w-44 md:w-56 paper-card p-4 -rotate-3">
+            <p className="text-[9px] tracking-[0.35em] uppercase text-warmgray">TSEC CodeStorm · name card</p>
             <p className="font-serif-display text-2xl text-ink mt-2">Shreya Chawale</p>
             <p className="font-hand text-xl text-blush">Design Head</p>
+            <p className="text-[12px] text-warmgray leading-snug mt-2">
+              Applied because I wanted to know how events happened. Stayed because I learned how
+              people make them happen.
+            </p>
             <div className="mt-3 h-8 bg-linen flex items-center justify-center">
               <span className="font-mono text-[10px] tracking-[0.5em] text-warmgray">||| || |||| |</span>
             </div>
@@ -93,14 +97,14 @@ export default function Leadership() {
           <div className="absolute left-[50%] top-[6%] w-40 md:w-48 bg-ink text-paper p-5 rotate-2 shadow-xl">
             <p className="text-[9px] tracking-[0.4em] uppercase text-champagne">flagship event</p>
             <p className="font-serif-display text-3xl leading-none mt-2">CODE<br />STORM</p>
-            <p className="font-hand text-lg text-blush mt-3">poster series — designed all 9</p>
+            <p className="font-hand text-lg text-blush mt-3">one poster. twenty versions.<br />version three won.</p>
           </div>
 
           {/* ticket */}
           <div className="absolute right-[4%] top-[36%] w-44 paper-card p-3 rotate-6 border-dashed border-2 border-champagne/50">
-            <p className="text-[9px] tracking-[0.3em] uppercase text-warmgray">admit one</p>
-            <p className="font-serif-display text-lg text-ink">Hack Night · Vol. 3</p>
-            <p className="font-hand text-lg text-sage">sold out — 200 seats ✓</p>
+            <p className="text-[9px] tracking-[0.3em] uppercase text-warmgray">admit one · 200 seats</p>
+            <p className="font-serif-display text-lg text-ink">Months of planning.</p>
+            <p className="font-hand text-lg text-sage">three hours of controlled chaos ✓</p>
           </div>
 
           {/* moodboard */}
@@ -111,13 +115,15 @@ export default function Leadership() {
                 <div key={c} className="aspect-square" style={{ background: c }} />
               ))}
             </div>
-            <p className="font-hand text-lg text-warmgray mt-2">the palette that survived 4 rounds</p>
+            <p className="font-hand text-lg text-warmgray mt-2">
+              turns out, the hardest design decision is knowing what to remove.
+            </p>
           </div>
 
           {/* sticky note */}
           <div className="absolute left-[10%] top-[58%] w-40 sticky-note p-4 rotate-2" style={{ background: "#F4E9C9" }}>
             <p className="font-hand text-xl text-ink leading-snug">
-              lead by making things people want to point at.
+              if I&apos;d stop scrolling for it, it&apos;s ready.
             </p>
           </div>
 
@@ -129,7 +135,9 @@ export default function Leadership() {
               <circle cx="108" cy="46" r="14" fill="none" stroke="#232323" strokeWidth="2" />
               <path d="M26 92 q 14 -24 28 0 M61 90 q 14 -24 28 0 M94 92 q 14 -24 28 0" fill="none" stroke="#232323" strokeWidth="2" />
             </svg>
-            <p className="font-hand text-lg text-center text-ink mt-2">the design team ♡</p>
+            <p className="font-hand text-lg text-center text-ink mt-2">
+              joined to design. left knowing how to build with people.
+            </p>
           </div>
         </div>
       </div>
